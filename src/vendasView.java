@@ -16,33 +16,32 @@ public class vendasVIEW extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(vendasVIEW.class.getName());
 
-    /**
-     * Creates new form vendasView
-     */
     public vendasVIEW() {
         initComponents();
+        listarProdutosVendidos(); // <-- CHAMAR O MÉTODO AQUI AO ABRIR A TELA
     }
     
     private void listarProdutosVendidos() {
-    try {
-        ProdutosDAO produtosdao = new ProdutosDAO();
-        DefaultTableModel model = (DefaultTableModel) tabelaVendas.getModel();
-        model.setNumRows(0);
-        
-        ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutos();
-        
-        for (int i = 0; i < listagem.size(); i++) {
-            model.addRow(new Object[]{
-                listagem.get(i).getId(),
-                listagem.get(i).getNome(),
-                listagem.get(i).getValor(),
-                listagem.get(i).getStatus()
-            });
+        try {
+            ProdutosDAO produtosdao = new ProdutosDAO();
+            DefaultTableModel model = (DefaultTableModel) tabelaVendas.getModel();
+            model.setNumRows(0);
+            
+            // Busca apenas os produtos vendidos
+            ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutosVendidos(); 
+            
+            for (int i = 0; i < listagem.size(); i++) {
+                model.addRow(new Object[]{
+                    listagem.get(i).getId(),
+                    listagem.get(i).getNome(),
+                    listagem.get(i).getValor(),
+                    listagem.get(i).getStatus()
+                });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro na tela de vendas: " + e.getMessage());
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Erro na tela de vendas: " + e.getMessage());
     }
-}
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -114,7 +113,7 @@ public class vendasVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     

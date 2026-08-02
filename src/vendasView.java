@@ -12,14 +12,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ivan-
  */
-public class vendasView extends javax.swing.JFrame {
+public class vendasVIEW extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(vendasView.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(vendasVIEW.class.getName());
 
     /**
      * Creates new form vendasView
      */
-    public vendasView() {
+    public vendasVIEW() {
         initComponents();
     }
     
@@ -140,7 +140,7 @@ public class vendasView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new vendasView().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new vendasVIEW().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
